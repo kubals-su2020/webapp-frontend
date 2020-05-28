@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  pr-check:
+    working_directory: ~/webapp-frontend
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install node_modules with npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+      - run:
+          name: Install angularcli
+          command: echo 'N' | sudo npm install -g @angular/cli@latest
+      - run:
+          name: Compiling code
+          command: npm run build
+      - run:
+          name: Running unit test
+          command: npm run test
+  build:
+    working_directory: ~/webapp-frontend
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install node_modules with npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+      - run:
+          name: Install angularcli
+          command: echo 'N' | sudo npm install -g @angular/cli@latest
+      - run:
+          name: Compiling code
+          command: npm run build
+      - run:
+          name: Running unit test
+          command: npm run test
+workflows:
+  version: 2
+  pr-check:
+    jobs:
+      - pr-check
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
