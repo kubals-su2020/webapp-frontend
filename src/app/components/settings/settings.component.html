@@ -50,6 +50,12 @@
         <p>
             <button mat-stroked-button color="primary" [disabled]="!settingsForm.valid">Update Profile</button>  
         </p>
+        <p>
+            <!-- <app-format-error [errorList]="errorList" *ngIf="error"></app-format-error> -->
+            <mat-error  *ngIf="error"> 
+              Some error occured!
+         </mat-error >
+          </p>
   </form>
   </mat-card-content>
   </mat-card>

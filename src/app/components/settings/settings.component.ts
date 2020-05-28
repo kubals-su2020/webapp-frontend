@@ -62,6 +62,7 @@ export class SettingsComponent implements OnInit {
         },
         err => {
           this.errorList = err;
+          console.log(err)
           this.error = true;
         });
   }
