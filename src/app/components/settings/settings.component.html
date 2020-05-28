@@ -1,0 +1,55 @@
+<mat-card *ngIf="currentUser!=null">
+    <mat-card-header>
+        <div mat-card-avatar><mat-icon>settings_applications</mat-icon></div>
+        <mat-card-title>Settings</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p>
+      <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        
+        <p>
+            <mat-form-field class="legacy" >
+                <mat-label>Email/Username</mat-label>
+                <input matInput formControlName="email" disabled>
+            </mat-form-field>
+        </p>
+      
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+        </p>
+  
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Password</mat-label>
+
+                <input matInput placeholder="password" formControlName="password" 
+                matTooltipPosition='before'
+                matTooltip="Password must contain atleast 8 character, atleast one digit, 
+                atleast one lowercase, atleast one uppercase, atleast one character from @$!%*?&" placeholder="******" required type='password' minlength="8"
+                [type]="hide ? 'password' : 'text'" required>
+                <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+
+                <!-- <input matInput formControlName="password" 
+                matTooltipPosition='before'
+                matTooltip="Password must contain atleast 6 character, atleast one digit, 
+                atleast one lowercase, atleast one uppercase, atleast one character from @$!%*?&" placeholder="******" required type='password' minlength="6"> -->
+            </mat-form-field>
+        </p>
+        <p>
+            <button mat-stroked-button color="primary" [disabled]="!settingsForm.valid">Update Profile</button>  
+        </p>
+  </form>
+  </mat-card-content>
+  </mat-card>
