@@ -10,7 +10,7 @@
         <p>
             <mat-form-field class="legacy" >
                 <mat-label>Email/Username</mat-label>
-                <input matInput formControlName="email" disabled>
+                <input matInput formControlName="email">
             </mat-form-field>
         </p>
       
@@ -35,7 +35,7 @@
                 <input matInput placeholder="password" formControlName="password" 
                 matTooltipPosition='before'
                 matTooltip="Password must contain atleast 8 character, atleast one digit, 
-                atleast one lowercase, atleast one uppercase, atleast one character from @$!%*?&" placeholder="******" required type='password' minlength="8"
+                atleast one lowercase, atleast one uppercase, atleast one character from @$!%*?&" placeholder="******" required type='password' 
                 [type]="hide ? 'password' : 'text'" required>
                 <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

@@ -30,7 +30,7 @@ export class SettingsComponent implements OnInit {
     this.settingsForm = new FormGroup({
       firstName: new FormControl(""),
       lastName: new FormControl(""),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl({value: '', disabled: true}),
       password: new FormControl("",[Validators.required, Validators.pattern(this.pwdPattern)])
     })
 
@@ -44,7 +44,7 @@ export class SettingsComponent implements OnInit {
         this.settingsForm = new FormGroup({
           firstName: new FormControl(this.currentUser.first_name),
           lastName: new FormControl(this.currentUser.last_name),
-          email: new FormControl(this.currentUser.email,[Validators.required, Validators.email]),
+          email: new FormControl({value: this.currentUser.email, disabled: true}),
           password: new FormControl("",[Validators.required, Validators.pattern(this.pwdPattern)])
         });
       },
