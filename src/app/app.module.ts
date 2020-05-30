@@ -28,6 +28,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/authservices/auth.guard';
 import { HttpRequestCustomService } from './sharedservices/http-request-custom.service';
+import { MyBookListingComponent } from './my-book-listing/my-book-listing.component';
+import { OthersBookListingComponent } from './others-book-listing/others-book-listing.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { HttpRequestCustomService } from './sharedservices/http-request-custom.s
     ProfileComponent,
     PageNotFoundComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    MyBookListingComponent,
+    OthersBookListingComponent
   ],
   imports: [
     BrowserModule,

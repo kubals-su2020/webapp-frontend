@@ -8,8 +8,10 @@ import { ProfileService } from '../../services/userservices/profile.service';
 })
 export class ProfileComponent implements OnInit {
   profile:any;
-  constructor(private profileService:ProfileService) { }
-
+  showMyListing:boolean;
+  constructor(private profileService:ProfileService) {
+    this.showMyListing = true;
+   }
   ngOnInit(): void {
     this.profileService.getUser().subscribe(
       data => {
@@ -19,5 +21,11 @@ export class ProfileComponent implements OnInit {
         // this.errorList = err;
         // this.error = true;
       });
+  }
+  decideTab(num) {
+    if (num == 1)
+      this.showMyListing = true;
+    else if (num == 2)
+      this.showMyListing = false;
   }
 }
