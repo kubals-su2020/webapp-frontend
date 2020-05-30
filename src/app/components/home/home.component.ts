@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  showMyListing:boolean;
+  constructor() {
+    this.showMyListing = true;
+   }
 
   ngOnInit(): void {
   }
-
+  decideTab(num) {
+    if (num == 1)
+      this.showMyListing = true;
+    else if (num == 2)
+      this.showMyListing = false;
+  }
 }

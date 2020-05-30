@@ -1,5 +1,5 @@
 .example-card {
-    min-width: 1000px;
+    min-width: 400px;
   }
   .example-header-image {
     background-image: url('../../../assets/images/user.png');
@@ -9,6 +9,4 @@
       display:flex;
       justify-content: center;
   }
-  mat-card-header{
-    justify-content: flex-start;
-  }
+ 
