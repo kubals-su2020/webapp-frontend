@@ -31,7 +31,7 @@
        <mat-card-subtitle>
          <mat-chip-list>
            <mat-chip >5<mat-icon color="primary">shopping_cart</mat-icon></mat-chip>
-           <mat-chip ><mat-icon color="primary">delete_outline</mat-icon></mat-chip>
+           <mat-chip (click)="openDialog()"><mat-icon color="primary">delete_outline</mat-icon></mat-chip>
            <!-- <button class="fav-btn" mat-stroked-button color="primary"*ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Add Favorite</button> -->
            <!-- <button class="fav-btn" mat-stroked-button color="accent" *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Unfavorite</button> -->
          </mat-chip-list>

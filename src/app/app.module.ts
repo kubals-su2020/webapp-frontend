@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,11 +32,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/authservices/auth.guard';
 import { HttpRequestCustomService } from './sharedservices/http-request-custom.service';
-import { MyBookListingComponent } from './my-book-listing/my-book-listing.component';
-import { OthersBookListingComponent } from './others-book-listing/others-book-listing.component';
-import { UpdateBookComponent } from './update-book/update-book.component';
-import { CartComponent } from './cart/cart.component';
-
+import { MyBookListingComponent } from './components/my-book-listing/my-book-listing.component';
+import { OthersBookListingComponent } from './components/others-book-listing/others-book-listing.component';
+import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { CartComponent } from './components/cart/cart.component';
+import { DialogContentExampleDialog } from './components/my-book-listing/my-book-listing.component'; 
+import { DialogContentExampleDialog1 } from './components/cart/cart.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { CartComponent } from './cart/cart.component';
     MyBookListingComponent,
     OthersBookListingComponent,
     UpdateBookComponent,
-    CartComponent
+    CartComponent,
+    DialogContentExampleDialog,
+    DialogContentExampleDialog1
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import { CartComponent } from './cart/cart.component';
     MatTooltipModule,
     MatChipsModule,
     MatDividerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,

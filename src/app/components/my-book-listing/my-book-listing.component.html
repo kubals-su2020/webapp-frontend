@@ -31,7 +31,7 @@
              <mat-card-actions>
               <mat-chip-list>
                 <mat-chip [routerLink]="['/updatebook']"><mat-icon color="primary">edit</mat-icon></mat-chip>
-                <mat-chip><mat-icon color="warn">delete_forever</mat-icon></mat-chip>
+                <mat-chip><mat-icon color="warn" (click)="openDialog()">delete_forever</mat-icon></mat-chip>
                </mat-chip-list>
             </mat-card-actions>
       

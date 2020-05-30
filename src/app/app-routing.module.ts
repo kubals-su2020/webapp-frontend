@@ -7,8 +7,8 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './services/authservices/auth.guard';
-import { UpdateBookComponent } from './update-book/update-book.component';
-import { CartComponent } from './cart/cart.component';
+import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path:'signup', component:SignUpComponent},

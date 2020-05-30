@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-my-book-listing',
@@ -19,7 +20,7 @@ export class MyBookListingComponent implements OnInit {
     { isbn: 19, title: 'Magma' ,price:10,published_date:new Date(),quantity:9},
     { isbn: 20, title: 'Tornado' ,price:10,published_date:new Date(),quantity:9}
   ];
-  constructor() {
+  constructor(public dialog: MatDialog) {
     
    }
   
@@ -29,7 +30,13 @@ export class MyBookListingComponent implements OnInit {
     // this.getListOfMyBooks()
     this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   getListOfMyBooks(){
 
   }
@@ -53,3 +60,9 @@ export class MyBookListingComponent implements OnInit {
     return 0;
   }
 }
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+
+export class DialogContentExampleDialog {}
