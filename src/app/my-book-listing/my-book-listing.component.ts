@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class MyBookListingComponent implements OnInit {
   sortedListOfBooks =[];
    listOfBooks = [
-    { isbn: 11, title: 'Dr Nice' ,price:3,published_date:new Date()},
-    { isbn: 12, title: 'Narco',price:10,published_date:new Date() },
-    { isbn: 13, title: 'Bombasto' ,price:10,published_date:new Date()},
-    { isbn: 14, title: 'Celeritas' ,price:10,published_date:new Date()},
-    { isbn: 15, title: 'Magneta' ,price:10,published_date:new Date()},
-    { isbn: 16, title: 'RubberMan' ,price:1,published_date:new Date()},
-    { isbn: 17, title: 'Dynama' ,price:3,published_date:new Date()},
-    { isbn: 18, title: 'Dr IQ' ,price:10,published_date:new Date()},
-    { isbn: 19, title: 'Magma' ,price:10,published_date:new Date()},
-    { isbn: 20, title: 'Tornado' ,price:10,published_date:new Date()}
+    { isbn: 11, title: 'Dr Nice' ,price:3,published_date:new Date(),quantity:0},
+    { isbn: 12, title: 'Narco',price:10,published_date:new Date(),quantity:19 },
+    { isbn: 13, title: 'Bombasto' ,price:10,published_date:new Date(),quantity:9},
+    { isbn: 14, title: 'Celeritas' ,price:10,published_date:new Date(),quantity:8},
+    { isbn: 15, title: 'Magneta' ,price:10,published_date:new Date(),quantity:9},
+    { isbn: 16, title: 'RubberMan' ,price:1,published_date:new Date(),quantity:0},
+    { isbn: 17, title: 'Dynama' ,price:3,published_date:new Date(),quantity:9},
+    { isbn: 18, title: 'Dr IQ' ,price:10,published_date:new Date(),quantity:9},
+    { isbn: 19, title: 'Magma' ,price:10,published_date:new Date(),quantity:9},
+    { isbn: 20, title: 'Tornado' ,price:10,published_date:new Date(),quantity:9}
   ];
   constructor() {
     

@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { HttpRequestCustomService } from './sharedservices/http-request-custom.s
 import { MyBookListingComponent } from './my-book-listing/my-book-listing.component';
 import { OthersBookListingComponent } from './others-book-listing/others-book-listing.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { UpdateBookComponent } from './update-book/update-book.component';
     HomeComponent,
     MyBookListingComponent,
     OthersBookListingComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { UpdateBookComponent } from './update-book/update-book.component';
     MatMenuModule,
     MatTooltipModule,
     MatChipsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatBadgeModule
   ],
   providers: [
     AuthGuard,

@@ -1,6 +1,16 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <button mat-stroked-button color="primary"  matBadgePosition="before" matBadge="4">  Submit Cart  </button> 
+      </mat-card-title>
+      <mat-card-content class="author">
+        <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
+        <mat-card-subtitle>$1000</mat-card-subtitle>
+       </mat-card-content>
+    </mat-card-header>
+</mat-card>
 
-
- <div *ngFor = "let book of sortedListOfBooks " class="outer-card">
+ <div *ngFor = "let book of cart " class="outer-card">
     <mat-card class="inner-card" *ngIf ="book.quantity!=0">
      <mat-card-header>
        <mat-card-title>
@@ -21,6 +31,7 @@
        <mat-card-subtitle>
          <mat-chip-list>
            <mat-chip >5<mat-icon color="primary">shopping_cart</mat-icon></mat-chip>
+           <mat-chip ><mat-icon color="primary">delete_outline</mat-icon></mat-chip>
            <!-- <button class="fav-btn" mat-stroked-button color="primary"*ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Add Favorite</button> -->
            <!-- <button class="fav-btn" mat-stroked-button color="accent" *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Unfavorite</button> -->
          </mat-chip-list>
@@ -30,6 +41,8 @@
          <mat-card-actions>
           <mat-chip-list>
             <mat-chip><mat-icon>add</mat-icon></mat-chip>
+            <mat-chip>5</mat-chip>
+            <mat-chip><mat-icon>remove</mat-icon></mat-chip>
             <!-- <mat-chip><mat-icon>delete_forever</mat-icon></mat-chip> -->
            </mat-chip-list>
         </mat-card-actions>
@@ -38,5 +51,5 @@
   
      </mat-card-content>
     </mat-card>
+
    </div>
-  

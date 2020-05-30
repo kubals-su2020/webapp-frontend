@@ -2,12 +2,13 @@
     <mat-chip [routerLink]="['/updatebook']"><mat-icon color="primary">add_circle</mat-icon>Add Book</mat-chip>
 
     <div *ngFor = "let book of sortedListOfBooks " class="outer-card">
-        <mat-card class="inner-card" >
+        <mat-card class="inner-card">
          <mat-card-header>
            <mat-card-title>
              <button class = "title-btn"mat-button color="primary">{{book.title}}</button> 
            </mat-card-title>
-           <mat-card-subtitle>{{book.isbn}}</mat-card-subtitle>
+           <mat-card-subtitle>Quantity Available:{{book.quantity}}</mat-card-subtitle>
+           <mat-card-subtitle>ISBN:{{book.isbn}}</mat-card-subtitle>
            <mat-card-content class="author">
              <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
              <mat-card-subtitle>${{book.price}}</mat-card-subtitle>

@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './services/authservices/auth.guard';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path:'signup', component:SignUpComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:'settings', component:SettingsComponent,canActivate:[AuthGuard]},
   { path:'home', component:HomeComponent},
   { path:'updatebook',component:UpdateBookComponent},
+  { path:'cart', component:CartComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
