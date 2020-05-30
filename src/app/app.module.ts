@@ -32,6 +32,7 @@ import { AuthGuard } from './services/authservices/auth.guard';
 import { HttpRequestCustomService } from './sharedservices/http-request-custom.service';
 import { MyBookListingComponent } from './my-book-listing/my-book-listing.component';
 import { OthersBookListingComponent } from './others-book-listing/others-book-listing.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OthersBookListingComponent } from './others-book-listing/others-book-li
     NavBarComponent,
     HomeComponent,
     MyBookListingComponent,
-    OthersBookListingComponent
+    OthersBookListingComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,

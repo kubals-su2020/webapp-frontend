@@ -7,6 +7,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './services/authservices/auth.guard';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 const routes: Routes = [
   { path:'signup', component:SignUpComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path:'profile', component:ProfileComponent,canActivate:[AuthGuard]},
   { path:'settings', component:SettingsComponent,canActivate:[AuthGuard]},
   { path:'home', component:HomeComponent},
+  { path:'updatebook',component:UpdateBookComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
