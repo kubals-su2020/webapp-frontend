@@ -26,6 +26,16 @@ export class BookService {
         }),
         catchError(this.errorHandl));
   }
+  getMyBooks(): Observable<any> {
+    return this.apiService.get('/books/seller')
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+
+        catchError(this.errorHandl));
+  }
+
   errorHandl(error: any) {
     return throwError(error);
   }

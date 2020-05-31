@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { BookService } from './../../services/userservices/book.service';
 
 @Component({
   selector: 'app-my-book-listing',
@@ -8,27 +9,28 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class MyBookListingComponent implements OnInit {
   sortedListOfBooks =[];
-   listOfBooks = [
-    { isbn: 11, title: 'Dr Nice' ,price:3,published_date:new Date(),quantity:0},
-    { isbn: 12, title: 'Narco',price:10,published_date:new Date(),quantity:19 },
-    { isbn: 13, title: 'Bombasto' ,price:10,published_date:new Date(),quantity:9},
-    { isbn: 14, title: 'Celeritas' ,price:10,published_date:new Date(),quantity:8},
-    { isbn: 15, title: 'Magneta' ,price:10,published_date:new Date(),quantity:9},
-    { isbn: 16, title: 'RubberMan' ,price:1,published_date:new Date(),quantity:0},
-    { isbn: 17, title: 'Dynama' ,price:3,published_date:new Date(),quantity:9},
-    { isbn: 18, title: 'Dr IQ' ,price:10,published_date:new Date(),quantity:9},
-    { isbn: 19, title: 'Magma' ,price:10,published_date:new Date(),quantity:9},
-    { isbn: 20, title: 'Tornado' ,price:10,published_date:new Date(),quantity:9}
-  ];
-  constructor(public dialog: MatDialog) {
+  listOfBooks =[];
+  //  listOfBooks = [
+  //   { isbn: 11, title: 'Dr Nice' ,price:3,published_date:new Date(),quantity:0},
+  //   { isbn: 12, title: 'Narco',price:10,published_date:new Date(),quantity:19 },
+  //   { isbn: 13, title: 'Bombasto' ,price:10,published_date:new Date(),quantity:9},
+  //   { isbn: 14, title: 'Celeritas' ,price:10,published_date:new Date(),quantity:8},
+  //   { isbn: 15, title: 'Magneta' ,price:10,published_date:new Date(),quantity:9},
+  //   { isbn: 16, title: 'RubberMan' ,price:1,published_date:new Date(),quantity:0},
+  //   { isbn: 17, title: 'Dynama' ,price:3,published_date:new Date(),quantity:9},
+  //   { isbn: 18, title: 'Dr IQ' ,price:10,published_date:new Date(),quantity:9},
+  //   { isbn: 19, title: 'Magma' ,price:10,published_date:new Date(),quantity:9},
+  //   { isbn: 20, title: 'Tornado' ,price:10,published_date:new Date(),quantity:9}
+  // ];
+  constructor(public dialog: MatDialog,private bookService:BookService) {
     
    }
   
   ngOnInit(): void {
-    console.log(this.listOfBooks)
+    // console.log(this.listOfBooks)
     // this.sortedListOfBooks = this.listOfBooks.sort((a, b) => a.price - b.price);
-    // this.getListOfMyBooks()
-    this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+    this.getListOfMyBooks();
+    
   }
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
@@ -38,7 +40,16 @@ export class MyBookListingComponent implements OnInit {
     });
   }
   getListOfMyBooks(){
-
+    this.bookService.getMyBooks().subscribe(
+      data => {
+        console.log(data)
+        this.listOfBooks =data;
+        this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+      },
+      err => {
+        // this.errorList = err;
+        // this.error = true;
+      });
   }
   sortFunc(a, b) {
     console.log("in sort")
