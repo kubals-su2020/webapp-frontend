@@ -32,11 +32,23 @@ export class MyBookListingComponent implements OnInit {
     this.getListOfMyBooks();
     
   }
-  openDialog() {
+  openDialog(book) {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      if(result){
+        this.bookService.deleteBook(book).subscribe(
+          data => {
+            console.log(data)
+            this.getListOfMyBooks();
+          },
+          err => {
+            // this.errorList = err;
+            // this.error = true;
+          });
+        
+      }
     });
   }
   getListOfMyBooks(){
