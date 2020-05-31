@@ -37,7 +37,8 @@ import { OthersBookListingComponent } from './components/others-book-listing/oth
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { CartComponent } from './components/cart/cart.component';
 import { DialogContentExampleDialog } from './components/my-book-listing/my-book-listing.component'; 
-import { DialogContentExampleDialog1 } from './components/cart/cart.component'; 
+import { DialogContentExampleDialog1 } from './components/cart/cart.component';
+import { AddBookComponent } from './components/add-book/add-book.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { DialogContentExampleDialog1 } from './components/cart/cart.component';
     UpdateBookComponent,
     CartComponent,
     DialogContentExampleDialog,
-    DialogContentExampleDialog1
+    DialogContentExampleDialog1,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
