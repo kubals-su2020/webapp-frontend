@@ -6,14 +6,14 @@
        [active]="rla.isActive">
       {{link.label}}
     </a>
-    <a  mat-tab-link [matMenuTriggerFor]="menu">Menu</a>
+    <a  mat-tab-link [matMenuTriggerFor]="menu" (click)="pullCart()">Menu</a>
     <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/settings']">
         <mat-icon>settings</mat-icon>
         <span>Settings</span>
     </button>
     <button mat-menu-item [routerLink]="['/cart']">
-        <mat-icon matBadge="15" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
+        <mat-icon matBadge="{{ cartList.length > 0 ? cartList.length : null }}" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
         <span>Cart</span>
     </button>
     <button mat-menu-item (click)='logout()'>
