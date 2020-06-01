@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from './../../services/userservices/book.service';
-
+import { CartService } from './../../services/userservices/cart.service';
+import { ProfileService } from '../../services/userservices/profile.service';
 @Component({
   selector: 'app-others-book-listing',
   templateUrl: './others-book-listing.component.html',
@@ -8,6 +9,9 @@ import { BookService } from './../../services/userservices/book.service';
 })
 export class OthersBookListingComponent implements OnInit {
     listOfBooks;
+    cartList;
+    cart = [];
+    buyer;
   // listOfBooks = [
   //   { isbn: 11, title: 'ooDr Nice' ,price:10,published_date:new Date(),quantity:10},
   //   { isbn: 12, title: 'ooNarco',price:10,published_date:new Date(),quantity:0 },
@@ -21,7 +25,9 @@ export class OthersBookListingComponent implements OnInit {
   //   { isbn: 20, title: 'oosTornado' ,price:10,published_date:new Date(),quantity:10}
   // ];
   sortedListOfBooks =[];
-  constructor(private bookService:BookService) {
+  constructor(private bookService:BookService,
+     private cartService:CartService,
+     private profileService:ProfileService) {
     
    }
   
@@ -34,13 +40,39 @@ export class OthersBookListingComponent implements OnInit {
     this.bookService.getOthersBooks().subscribe(
       data => {
         this.listOfBooks =data;
-        this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+        this.listOfBooks.forEach(function(o) { o.orderQuantity = 0 });
+        this.cartService.getCart().subscribe(cart=>{
+          this.cartList = cart;
+          for(let c in this.cartList){
+            this.filterValue(this.listOfBooks,"id",this.cartList[c].book_id,this.cartList[c].quantity);
+            this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+          }
+        },
+        err=>{
+
+        })
       },
       err => {
         // this.errorList = err;
         // this.error = true;
       });
+      
+      this.profileService.getUser().subscribe(
+        data => {
+          this.buyer =data;
+        },
+        err => {
+          // this.errorList = err;
+          // this.error = true;
+        });
   }
+  filterValue = (obj, key, value,orderQuantity)=> obj.find(v =>{ 
+    if(v[key] === value){
+        v["orderQuantity"] = orderQuantity;
+        return v;
+    }
+  });
+  
   sortFunc(a, b) {
     if ( a.price < b.price ){
       return -1;
@@ -58,5 +90,35 @@ export class OthersBookListingComponent implements OnInit {
       return 0;
     }
     return 0;
+  }
+  addToCart(book){
+    if(book.quantity>book.orderQuantity){
+      book.orderQuantity ++;
+      this.cartService.updateCart(book,this.buyer).subscribe(cart=>{
+        this.cartList = cart;
+        for(let c in this.cartList){
+          this.filterValue(this.listOfBooks,"id",this.cartList[c].book_id,this.cartList[c].quantity);
+          this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+        }
+      },
+      err=>{
+
+      })
+    }
+  }
+  removeFromCart(book){
+    if(book.orderQuantity>0){
+      book.orderQuantity --;
+      this.cartService.updateCart(book,this.buyer).subscribe(cart=>{
+        this.cartList = cart;
+        for(let c in this.cartList){
+          this.filterValue(this.listOfBooks,"id",this.cartList[c].book_id,this.cartList[c].quantity);
+          this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+        }
+      },
+      err=>{
+
+      })
+    }
   }
 }
