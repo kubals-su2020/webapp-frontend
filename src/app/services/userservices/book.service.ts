@@ -35,6 +35,15 @@ export class BookService {
 
         catchError(this.errorHandl));
   }
+  getOthersBooks(): Observable<any> {
+    return this.apiService.get('/books/others')
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+
+        catchError(this.errorHandl));
+  }
   deleteBook(book): Observable<any> {
     console.log(book)
     return this.apiService.delete('/books/seller/'+book.id)
