@@ -18,6 +18,15 @@ export class CartService {
 
         catchError(this.errorHandl));
   }
+  getCartDetails(): Observable<any> {
+    return this.apiService.get('/cart/details')
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+
+        catchError(this.errorHandl));
+  }
   updateCart(bookDetails,buyer): Observable<any> {
     let data = {
       book:bookDetails,
