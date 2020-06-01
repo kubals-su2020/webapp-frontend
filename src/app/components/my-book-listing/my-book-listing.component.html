@@ -30,7 +30,7 @@
                 <!-- <button mat-button type="submit" (click)="viewArticle(article)"><mat-icon color="primary">add_comment</mat-icon></button> -->
              <mat-card-actions>
               <mat-chip-list>
-                <mat-chip [routerLink]="['/updatebook']"><mat-icon color="primary">edit</mat-icon></mat-chip>
+                <mat-chip [routerLink]="['/updatebook',book.id]" [state]='{book: book}'><mat-icon color="primary">edit</mat-icon></mat-chip>
                 <mat-chip><mat-icon color="warn" (click)="openDialog(book)">delete_forever</mat-icon></mat-chip>
                </mat-chip-list>
             </mat-card-actions>

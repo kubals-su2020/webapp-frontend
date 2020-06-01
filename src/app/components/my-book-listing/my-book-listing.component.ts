@@ -36,11 +36,9 @@ export class MyBookListingComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       if(result){
         this.bookService.deleteBook(book).subscribe(
           data => {
-            console.log(data)
             this.getListOfMyBooks();
           },
           err => {
@@ -54,7 +52,6 @@ export class MyBookListingComponent implements OnInit {
   getListOfMyBooks(){
     this.bookService.getMyBooks().subscribe(
       data => {
-        console.log(data)
         this.listOfBooks =data;
         this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
       },
@@ -64,7 +61,6 @@ export class MyBookListingComponent implements OnInit {
       });
   }
   sortFunc(a, b) {
-    console.log("in sort")
     if ( a.price < b.price ){
       return -1;
     }

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path:'profile', component:ProfileComponent,canActivate:[AuthGuard]},
   { path:'settings', component:SettingsComponent,canActivate:[AuthGuard]},
   { path:'home', component:HomeComponent},
-  { path:'updatebook',component:UpdateBookComponent},
+  { path:'updatebook/:id',component:UpdateBookComponent},
   { path:'cart', component:CartComponent},
   { path:'addbook', component:AddBookComponent},
   { path: '**', component: PageNotFoundComponent }
