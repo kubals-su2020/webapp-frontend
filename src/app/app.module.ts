@@ -38,6 +38,7 @@ import { UpdateBookComponent } from './components/update-book/update-book.compon
 import { CartComponent } from './components/cart/cart.component';
 import { DialogContentExampleDialog } from './components/my-book-listing/my-book-listing.component'; 
 import { DialogContentExampleDialog1 } from './components/cart/cart.component';
+import { SuccessDialog } from './components/cart/cart.component';
 import { AddBookComponent } from './components/add-book/add-book.component'; 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     CartComponent,
     DialogContentExampleDialog,
     DialogContentExampleDialog1,
-    AddBookComponent
+    AddBookComponent,
+    SuccessDialog
   ],
   imports: [
     BrowserModule,
@@ -89,3 +91,4 @@ import { AddBookComponent } from './components/add-book/add-book.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

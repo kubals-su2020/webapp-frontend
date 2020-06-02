@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { CartService } from './../../services/userservices/cart.service';
 import { ProfileService } from '../../services/userservices/profile.service';
+import { Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,6 +14,8 @@ export class CartComponent implements OnInit {
   buyer;
   itemCount ;
   totalAmount;
+  errorList;
+  success;
   constructor(public dialog: MatDialog,
     private cartService:CartService,
     private profileService:ProfileService) {
@@ -62,7 +66,7 @@ export class CartComponent implements OnInit {
   addToCart(book){
     if(book.quantity>book.orderQuantity){
       book.orderQuantity ++;
-      console.log(book)
+      // console.log(book)
       this.cartService.updateCart(book,this.buyer).subscribe(cart=>{
         this.getCartItems();
       },
@@ -82,12 +86,44 @@ export class CartComponent implements OnInit {
       })
     }
   }
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog1);
+  openDialog(errorList) {
+    // console.log(errorList)
+    const dialogRef = this.dialog.open(DialogContentExampleDialog1,{
+      data: {
+        error: errorList
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
+  }
+
+
+  openDialogSuccess() {
+    const dialogRef = this.dialog.open(SuccessDialog);
+    this.getCartItems();
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+    });
+  }
+  submitCart(){
+    this.cartService.submitCart(this.cartList,this.buyer).subscribe(
+      data => {
+        // console.log(data)
+        if(data.hasOwnProperty('message')&&data.message.hasOwnProperty('error')){
+            this.errorList = data.message.error;
+            this.openDialog(this.errorList);
+        }
+        if(data.hasOwnProperty('message')&&data.message.hasOwnProperty('success')){
+          this.success = data.message.success;
+          this.openDialogSuccess();
+        }
+      },
+      err => {
+        // this.errorList = err;
+        // this.error = true;
+      });
   }
 
 }
@@ -96,4 +132,24 @@ export class CartComponent implements OnInit {
   templateUrl: 'dialog-content-example-dialog.html',
 })
 
-export class DialogContentExampleDialog1 {}
+export class DialogContentExampleDialog1 {
+  fromPage;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+      this.fromPage = data.error
+  }
+}
+
+
+@Component({
+  selector: 'success-dialog',
+  templateUrl: 'success-dialog.html',
+})
+
+export class SuccessDialog {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+}

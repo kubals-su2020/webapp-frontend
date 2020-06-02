@@ -41,6 +41,14 @@ export class CartService {
       }),
       catchError(this.errorHandl));
   }
+  submitCart(cart,buyer):Observable<any>{
+    return this.apiService.post('/cart/submit' , {cart,buyer})
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+        catchError(this.errorHandl));
+  }
   errorHandl(error: any) {
     return throwError(error);
   }
