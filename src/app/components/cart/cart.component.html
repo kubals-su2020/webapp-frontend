@@ -1,11 +1,11 @@
 <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <button mat-stroked-button color="primary"  matBadgePosition="before" matBadge="4">  Submit Cart  </button> 
+        <button mat-stroked-button color="primary"  matBadgePosition="before" matBadge="{{itemCount}}">  Submit Cart  </button> 
       </mat-card-title>
       <mat-card-content class="author">
         <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
-        <mat-card-subtitle>$1000</mat-card-subtitle>
+        <mat-card-subtitle>${{totalAmount}}</mat-card-subtitle>
        </mat-card-content>
     </mat-card-header>
 </mat-card>
@@ -18,6 +18,7 @@
        </mat-card-title>
        <mat-card-subtitle>Quantity Available:{{cart.book.quantity}}</mat-card-subtitle>
        <mat-card-subtitle>ISBN:{{cart.book.isbn}}</mat-card-subtitle>
+       <mat-card-subtitle>Authors:{{cart.book.authorsString}}</mat-card-subtitle>
        <mat-card-content class="author">
          <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
          <mat-card-subtitle>${{cart.book.price}}</mat-card-subtitle>

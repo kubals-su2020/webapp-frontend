@@ -10,9 +10,13 @@ import { ProfileService } from '../../services/userservices/profile.service';
 export class CartComponent implements OnInit {
   cartList;
   buyer;
+  itemCount ;
+  totalAmount;
   constructor(public dialog: MatDialog,
     private cartService:CartService,
     private profileService:ProfileService) {
+      this.itemCount = 0;
+      this.totalAmount = 0;
   //   this.cart=[{ isbn: 16, title: 'RubberMan' ,price:1,published_date:new Date(),quantity:0},
   //   { isbn: 17, title: 'Dynama' ,price:3,published_date:new Date(),quantity:9},
   //   { isbn: 18, title: 'Dr IQ' ,price:10,published_date:new Date(),quantity:9},
@@ -36,16 +40,25 @@ export class CartComponent implements OnInit {
     this.cartService.getCartDetails().subscribe(data=>{
       this.cartList = data;
       
-      this.cartList.forEach(function(o) { o.book.orderQuantity = o.quantity });
-      
-      console.log(this.cartList)
+      this.cartList.forEach(function(o) { 
+        o.book.orderQuantity = o.quantity;
+        o.book.authorsString =Array.prototype.map.call(o.book.authors, s => s.author_name).toString() });
+        this.calculateCart();
+      // console.log(this.cartList)
     },
     err=>{
 
     })
   }
 
-
+  calculateCart(){
+    this.itemCount = 0;
+    this.totalAmount = 0;
+    for(let c in this.cartList){
+      this.itemCount++;
+      this.totalAmount = this.totalAmount + this.cartList[c].book.price*this.cartList[c].quantity;
+    }
+  }
   addToCart(book){
     if(book.quantity>book.orderQuantity){
       book.orderQuantity ++;

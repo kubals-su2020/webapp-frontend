@@ -40,13 +40,17 @@ export class OthersBookListingComponent implements OnInit {
     this.bookService.getOthersBooks().subscribe(
       data => {
         this.listOfBooks =data;
-        this.listOfBooks.forEach(function(o) { o.orderQuantity = 0 });
+        // console.log(this.listOfBooks)
+        this.listOfBooks.forEach(function(o) { 
+          o.orderQuantity = 0;
+          o.authorsString =Array.prototype.map.call(o.authors, s => s.author_name).toString() });
         this.cartService.getCart().subscribe(cart=>{
           this.cartList = cart;
           for(let c in this.cartList){
             this.filterValue(this.listOfBooks,"id",this.cartList[c].book_id,this.cartList[c].quantity);
-            this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
+            
           }
+          this.sortedListOfBooks= this.listOfBooks.sort(this.sortFunc)
         },
         err=>{
 
