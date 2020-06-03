@@ -20,6 +20,7 @@ export class SettingsComponent implements OnInit {
   hide= true;
   // "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$"
   pwdPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}";
+  atleastOneLetter = "(?=.*[a-zA-Z]).*";
   constructor(private authService: AuthService, private route: ActivatedRoute, private profileService: ProfileService, private router: Router) {
     this.username = null;
     this.currentUser = null;
@@ -28,8 +29,8 @@ export class SettingsComponent implements OnInit {
   // Load settings page
   ngOnInit(): void {
     this.settingsForm = new FormGroup({
-      firstName: new FormControl(""),
-      lastName: new FormControl(""),
+      firstName: new FormControl("",[ Validators.pattern(this.atleastOneLetter)]),
+      lastName: new FormControl("",[ Validators.pattern(this.atleastOneLetter)]),
       email: new FormControl({value: '', disabled: true}),
       password: new FormControl("",[ Validators.pattern(this.pwdPattern)])
     })
@@ -42,8 +43,8 @@ export class SettingsComponent implements OnInit {
         this.currentUser.first_name = data.first_name;
         this.currentUser.last_name =data.last_name;
         this.settingsForm = new FormGroup({
-          firstName: new FormControl(this.currentUser.first_name),
-          lastName: new FormControl(this.currentUser.last_name),
+          firstName: new FormControl(this.currentUser.first_name,[ Validators.pattern(this.atleastOneLetter)]),
+          lastName: new FormControl(this.currentUser.last_name,[ Validators.pattern(this.atleastOneLetter)]),
           email: new FormControl({value: this.currentUser.email, disabled: true}),
           password: new FormControl("",[ Validators.pattern(this.pwdPattern)])
         });
