@@ -1,0 +1,45 @@
+
+
+ <div *ngFor = "let book of sortedListOfBooks " class="outer-card">
+    <mat-card class="inner-card" *ngIf ="book.quantity!=0">
+     <mat-card-header>
+       <mat-card-title>
+         <button class = "title-btn"mat-button color="primary">{{book.title}}</button> 
+       </mat-card-title>
+       <mat-card-subtitle>Quantity Available:{{book.quantity}}</mat-card-subtitle>
+       <mat-card-subtitle>ISBN:{{book.isbn}}</mat-card-subtitle>
+       <mat-card-subtitle>Author:{{book.authorsString}}</mat-card-subtitle>
+       <mat-card-content class="author">
+         <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
+         <mat-card-subtitle>${{book.price}}</mat-card-subtitle>
+         <mat-card-subtitle>Published on:{{book.publication_date| date:'longDate'}}</mat-card-subtitle>
+        </mat-card-content>
+     </mat-card-header>
+     <mat-divider></mat-divider>
+     <br>
+  
+     <mat-card-content class="like-comment">
+       <mat-card-subtitle>
+         <mat-chip-list>
+           <mat-chip >{{book.orderQuantity}}<mat-icon color="primary">shopping_cart</mat-icon></mat-chip>
+           <!-- <button class="fav-btn" mat-stroked-button color="primary"*ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Add Favorite</button> -->
+           <!-- <button class="fav-btn" mat-stroked-button color="accent" *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Unfavorite</button> -->
+         </mat-chip-list>
+         </mat-card-subtitle>
+       <mat-card-subtitle>
+            <!-- <button mat-button type="submit" (click)="viewArticle(article)"><mat-icon color="primary">add_comment</mat-icon></button> -->
+         <mat-card-actions>
+          <mat-chip-list>
+            <mat-chip (click)="addToCart(book)"><mat-icon>add</mat-icon></mat-chip>
+            <mat-chip>{{book.orderQuantity}}</mat-chip>
+            <mat-chip (click)="removeFromCart(book)"><mat-icon>remove</mat-icon></mat-chip>
+            <!-- <mat-chip><mat-icon>delete_forever</mat-icon></mat-chip> -->
+           </mat-chip-list>
+        </mat-card-actions>
+  
+        </mat-card-subtitle>
+  
+     </mat-card-content>
+    </mat-card>
+   </div>
+  

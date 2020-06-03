@@ -8,8 +8,10 @@ import { ProfileService } from '../../services/userservices/profile.service';
 })
 export class ProfileComponent implements OnInit {
   profile:any;
-  constructor(private profileService:ProfileService) { }
-
+ 
+  constructor(private profileService:ProfileService) {
+    
+   }
   ngOnInit(): void {
     this.profileService.getUser().subscribe(
       data => {
@@ -20,4 +22,5 @@ export class ProfileComponent implements OnInit {
         // this.error = true;
       });
   }
+
 }

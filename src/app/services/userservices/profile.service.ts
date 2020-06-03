@@ -19,6 +19,13 @@ export class ProfileService {
         catchError(this.errorHandl));
   }
   updateUser(userDetails):Observable<any>{
+    // console.log(userDetails)
+    if(userDetails.password.length <1){
+      userDetails = {
+          firstName : userDetails.firstName,
+          lastName : userDetails.lastName
+      }
+    }
     return this.apiService.put('/user', { user: userDetails })
     .pipe(
       map((res: Response) => {

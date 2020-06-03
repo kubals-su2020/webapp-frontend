@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <button mat-stroked-button color="primary"  matBadgePosition="before" matBadge="{{itemCount}}" (click)="submitCart()">  Submit Cart  </button> 
+      </mat-card-title>
+      <mat-card-content class="author">
+        <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
+        <mat-card-subtitle>${{totalAmount}}</mat-card-subtitle>
+       </mat-card-content>
+    </mat-card-header>
+</mat-card>
+
+ <div *ngFor = "let cart of cartList " class="outer-card">
+    <mat-card class="inner-card" *ngIf ="cart.book.quantity!=0">
+     <mat-card-header>
+       <mat-card-title>
+         <button class = "title-btn"mat-button color="primary">{{cart.book.title}}</button> 
+       </mat-card-title>
+       <mat-card-subtitle>Quantity Available:{{cart.book.quantity}}</mat-card-subtitle>
+       <mat-card-subtitle>ISBN:{{cart.book.isbn}}</mat-card-subtitle>
+       <mat-card-subtitle>Authors:{{cart.book.authorsString}}</mat-card-subtitle>
+       <mat-card-content class="author">
+         <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
+         <mat-card-subtitle>${{cart.book.price}}</mat-card-subtitle>
+         <mat-card-subtitle>Published on:{{cart.book.publication_date| date:'longDate'}}</mat-card-subtitle>
+        </mat-card-content>
+     </mat-card-header>
+     <mat-divider></mat-divider>
+     <br>
+  
+     <mat-card-content class="like-comment">
+       <mat-card-subtitle>
+         <mat-chip-list>
+           <mat-chip >{{cart.quantity}}<mat-icon color="primary">shopping_cart</mat-icon></mat-chip>
+           <!--  <mat-chip (click)="openDialog()"><mat-icon color="primary">delete_outline</mat-icon></mat-chip> -->
+           <!-- <button class="fav-btn" mat-stroked-button color="primary"*ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Add Favorite</button> -->
+           <!-- <button class="fav-btn" mat-stroked-button color="accent" *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Unfavorite</button> -->
+         </mat-chip-list>
+         </mat-card-subtitle>
+       <mat-card-subtitle>
+            <!-- <button mat-button type="submit" (click)="viewArticle(article)"><mat-icon color="primary">add_comment</mat-icon></button> -->
+         <mat-card-actions>
+          <mat-chip-list>
+            <mat-chip (click)="addToCart(cart.book)"><mat-icon>add</mat-icon></mat-chip>
+            <mat-chip >{{cart.quantity}}</mat-chip>
+            <mat-chip (click)="removeFromCart(cart.book)"><mat-icon>remove</mat-icon></mat-chip>
+            <!-- <mat-chip><mat-icon>delete_forever</mat-icon></mat-chip> -->
+           </mat-chip-list>
+        </mat-card-actions>
+  
+        </mat-card-subtitle>
+  
+     </mat-card-content>
+    </mat-card>
+
+   </div>

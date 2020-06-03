@@ -15,8 +15,9 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   error = false;
   errorList;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
   pwdPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}";
+  atleastOneLetter = "(?=.*[a-zA-Z]).*";
   constructor(private authService: AuthService, private router: Router, private jwtService: JwtTokenService) {
 
   }
@@ -25,8 +26,8 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       email: this.email,
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
+      firstName: new FormControl('',[Validators.required,Validators.pattern(this.atleastOneLetter)]),
+      lastName: new FormControl('',[Validators.required,Validators.pattern(this.atleastOneLetter)]),
       password: new FormControl("",[Validators.required, Validators.pattern(this.pwdPattern)])
     })
   }

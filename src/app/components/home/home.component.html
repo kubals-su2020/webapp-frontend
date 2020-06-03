@@ -1,1 +1,17 @@
-<p>home works!</p>
+<nav mat-tab-nav-bar mat-align-tabs="center" color="primary" >
+    <a mat-tab-link
+      (click)="decideTab(1)"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      Sell
+    </a>
+    <a mat-tab-link
+      (click)="decideTab(2)"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      Buy
+    </a>
+</nav>
+
+<app-my-book-listing *ngIf="showMyListing"></app-my-book-listing>
+<app-others-book-listing *ngIf="!showMyListing"></app-others-book-listing>

@@ -11,6 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +32,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/authservices/auth.guard';
 import { HttpRequestCustomService } from './sharedservices/http-request-custom.service';
-
+import { MyBookListingComponent } from './components/my-book-listing/my-book-listing.component';
+import { OthersBookListingComponent } from './components/others-book-listing/others-book-listing.component';
+import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { CartComponent } from './components/cart/cart.component';
+import { DialogContentExampleDialog } from './components/my-book-listing/my-book-listing.component'; 
+import { DialogContentExampleDialog1 } from './components/cart/cart.component';
+import { SuccessDialog } from './components/cart/cart.component';
+import { AddBookComponent } from './components/add-book/add-book.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +50,15 @@ import { HttpRequestCustomService } from './sharedservices/http-request-custom.s
     ProfileComponent,
     PageNotFoundComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    MyBookListingComponent,
+    OthersBookListingComponent,
+    UpdateBookComponent,
+    CartComponent,
+    DialogContentExampleDialog,
+    DialogContentExampleDialog1,
+    AddBookComponent,
+    SuccessDialog
   ],
   imports: [
     BrowserModule,
@@ -59,7 +78,11 @@ import { HttpRequestCustomService } from './sharedservices/http-request-custom.s
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
@@ -68,3 +91,4 @@ import { HttpRequestCustomService } from './sharedservices/http-request-custom.s
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

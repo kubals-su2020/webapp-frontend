@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Few Items Unavailable!</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Please check relevant items and submit cart again...</h3>
+  <p>Details:</p>
+  <p *ngFor="let error of fromPage">Book name: {{error.title}} is currently running out of stock.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Ok</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Delete</button> -->
+</mat-dialog-actions>
