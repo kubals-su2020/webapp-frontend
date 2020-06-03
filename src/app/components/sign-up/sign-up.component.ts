@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   error = false;
   errorList;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
   pwdPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}";
   constructor(private authService: AuthService, private router: Router, private jwtService: JwtTokenService) {
 
