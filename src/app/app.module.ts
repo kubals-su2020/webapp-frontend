@@ -38,8 +38,13 @@ import { UpdateBookComponent } from './components/update-book/update-book.compon
 import { CartComponent } from './components/cart/cart.component';
 import { DialogContentExampleDialog } from './components/my-book-listing/my-book-listing.component'; 
 import { DialogContentExampleDialog1 } from './components/cart/cart.component';
+import { DialogContentExampleDialog3 } from './components/update-book/update-book.component'
 import { SuccessDialog } from './components/cart/cart.component';
-import { AddBookComponent } from './components/add-book/add-book.component'; 
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { ViewBookImagesComponent } from './components/view-book-images/view-book-images.component'; 
+
+
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,8 +62,10 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     CartComponent,
     DialogContentExampleDialog,
     DialogContentExampleDialog1,
+    DialogContentExampleDialog3,
     AddBookComponent,
-    SuccessDialog
+    SuccessDialog,
+    ViewBookImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +89,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     MatChipsModule,
     MatDividerModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCarouselModule
   ],
   providers: [
     AuthGuard,

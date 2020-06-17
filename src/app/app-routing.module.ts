@@ -10,6 +10,7 @@ import { AuthGuard } from './services/authservices/auth.guard';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { ViewBookImagesComponent } from './components/view-book-images/view-book-images.component';
 
 const routes: Routes = [
   { path:'signup', component:SignUpComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path:'updatebook/:id',component:UpdateBookComponent},
   { path:'cart', component:CartComponent},
   { path:'addbook', component:AddBookComponent},
+  { path:'viewImages/:id', component:ViewBookImagesComponent,canActivate:[AuthGuard]},
   { path: '**', component: PageNotFoundComponent }
 ];
 

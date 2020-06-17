@@ -13,6 +13,7 @@
          <!-- <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle> -->
          <mat-card-subtitle>${{book.price}}</mat-card-subtitle>
          <mat-card-subtitle>Published on:{{book.publication_date| date:'longDate'}}</mat-card-subtitle>
+         <mat-card-subtitle><button mat-button color="primary" [routerLink]="['/viewImages',book.id]" [state]='{book: book}'>View Images</button> </mat-card-subtitle>
         </mat-card-content>
      </mat-card-header>
      <mat-divider></mat-divider>
