@@ -40,7 +40,7 @@ export class OthersBookListingComponent implements OnInit {
     this.bookService.getOthersBooks().subscribe(
       data => {
         this.listOfBooks =data;
-        // console.log(this.listOfBooks)
+        //  console.log(this.listOfBooks)
         this.listOfBooks.forEach(function(o) { 
           o.orderQuantity = 0;
           o.authorsString =Array.prototype.map.call(o.authors, s => s.author_name).toString() });

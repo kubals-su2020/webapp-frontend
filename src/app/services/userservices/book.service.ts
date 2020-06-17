@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 export class BookService {
 
   constructor(private apiService:HttpRequestCustomService) { }
-  saveBook(bookDetails,seller):Observable<any>{
+  saveBook(bookDetails,seller,imageData,fileList):Observable<any>{
     let authors = [];
     let authorList = bookDetails.authors.split(",");
     for(let a in authorList){
@@ -19,6 +19,9 @@ export class BookService {
     
     bookDetails.authors = authors;
     bookDetails.seller = seller;
+    bookDetails.imageData = imageData;
+    bookDetails.fileList = fileList;
+    // console.log(bookDetails.imageData[0].metadata)
     return this.apiService.post('/book' , {book : bookDetails})
       .pipe(
         map((res: Response) => {
@@ -45,7 +48,7 @@ export class BookService {
         catchError(this.errorHandl));
   }
   deleteBook(book): Observable<any> {
-    console.log(book)
+    // console.log(book)
     return this.apiService.delete('/books/seller/'+book.id)
       .pipe(
         map((res: Response) => {
@@ -53,7 +56,7 @@ export class BookService {
         }),
         catchError(this.errorHandl));
   }
-  updateBook(bookDetails,bookid):Observable<any>{
+  updateBook(bookDetails,bookid,imageData,fileList,seller_id):Observable<any>{
     // console.log(bookDetails)
     let authors = [];
     let authorList = bookDetails.authors.split(",");
@@ -64,7 +67,26 @@ export class BookService {
     
     bookDetails.authors = authors;
     bookDetails.id = bookid;
+    bookDetails.imageData = imageData;
+    bookDetails.fileList = fileList;
+    bookDetails.sellerId= seller_id
     return this.apiService.put('/books/seller/'+bookid, { book: bookDetails })
+    .pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.errorHandl));
+  }
+  getImages(bookId):Observable<any>{
+    return this.apiService.get('/book/'+bookId+'/images')
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+        catchError(this.errorHandl));
+  }
+  deleteImage(imageName):Observable<any>{
+    return this.apiService.delete('/image/'+imageName)
     .pipe(
       map((res: Response) => {
         return res || {}
