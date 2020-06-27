@@ -39,11 +39,20 @@ jobs:
           name: Install angularcli
           command: echo 'N' | sudo npm install -g @angular/cli@latest
       - run:
-          name: Compiling code
+          name: Install aws_cli
+          command: sudo apt-get -y install awscli
+      - run:
+          name: Build code
           command: npm run build
       - run:
-          name: Running unit test
-          command: npm run test
+          name: Build deployment artifact
+          command: zip -r ~/webapp_frontend.zip .
+      - run:
+          name: Copy artifact to S3
+          command: aws s3 cp ~/webapp_frontend.zip s3://codedeploy.shalvikubal.me
+      - run:
+          name: Deploy code
+          command: aws deploy create-deployment --application-name csye6225-webapp  --deployment-group-name csye6225-webapp-deployment --s3-location bucket=codedeploy.shalvikubal.me,bundleType=zip,key=webapp_frontend.zip
 workflows:
   version: 2
   pr-check:
