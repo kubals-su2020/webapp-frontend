@@ -33,6 +33,15 @@ export class ProfileService {
       }),
       catchError(this.errorHandl));
   }
+  test():Observable<any>{
+    return this.apiService.get('/test')
+    .pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+
+      catchError(this.errorHandl));
+  }
   errorHandl(error: any) {
     return throwError(error);
   }

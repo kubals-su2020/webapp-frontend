@@ -11,8 +11,10 @@ import { UpdateBookComponent } from './components/update-book/update-book.compon
 import { CartComponent } from './components/cart/cart.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { ViewBookImagesComponent } from './components/view-book-images/view-book-images.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path:'signup', component:SignUpComponent},
   { path:'signin', component:SignInComponent},
   { path:'profile', component:ProfileComponent,canActivate:[AuthGuard]},
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path:'cart', component:CartComponent},
   { path:'addbook', component:AddBookComponent},
   { path:'viewImages/:id', component:ViewBookImagesComponent,canActivate:[AuthGuard]},
+  { path:'test',component:TestComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
