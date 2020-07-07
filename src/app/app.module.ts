@@ -45,6 +45,11 @@ import { ViewBookImagesComponent } from './components/view-book-images/view-book
 
 
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { TestComponent } from './components/test/test.component';
+
+
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +70,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     DialogContentExampleDialog3,
     AddBookComponent,
     SuccessDialog,
-    ViewBookImagesComponent
+    ViewBookImagesComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +100,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
   ],
   providers: [
     AuthGuard,
-    HttpRequestCustomService
+    HttpRequestCustomService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

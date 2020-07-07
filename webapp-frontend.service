@@ -1,0 +1,13 @@
+[Unit]
+Description=webapp frontend service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=/home/ubuntu/webapp_frontend/dist/UI
+ExecStart=/usr/bin/http-server .
+
+[Install]
+WantedBy=multi-user.target
