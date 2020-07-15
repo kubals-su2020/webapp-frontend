@@ -18,7 +18,7 @@ jobs:
           command: echo 'N' | sudo npm install -g @angular/cli@latest
       - run:
           name: Compiling code
-          command: npm run build
+          command: ng build --prod
       - run:
           name: Running unit test
           command: npm run test
@@ -43,7 +43,7 @@ jobs:
           command: sudo apt-get -y install awscli
       - run:
           name: Build code
-          command: npm run build
+          command: ng build --prod
       - run:
           name: Build deployment artifact
           command: zip -r ~/webapp_frontend.zip .
