@@ -14,7 +14,7 @@ import { ViewBookImagesComponent } from './components/view-book-images/view-book
 import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path:'signup', component:SignUpComponent},
   { path:'signin', component:SignInComponent},
   { path:'profile', component:ProfileComponent,canActivate:[AuthGuard]},
