@@ -21,6 +21,7 @@ export class BookService {
     bookDetails.seller = seller;
     bookDetails.imageData = imageData;
     bookDetails.fileList = fileList;
+    // console.log(bookDetails)
     // console.log(bookDetails.imageData[0].metadata)
     return this.apiService.post('/book' , {book : bookDetails})
       .pipe(
