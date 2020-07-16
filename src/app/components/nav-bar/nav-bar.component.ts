@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
   Navbarlinks = [
-    { path: 'home', label: 'Home' },
     { path: 'signin', label: 'Sign in' },
     { path: 'signup', label: 'Sign up' }];
 
@@ -51,6 +50,13 @@ export class NavBarComponent implements OnInit {
   }
     // Function for logout 
     logout() {
-      this.authService.logout();
+      // console.log("logout service")
+      this.authService.logout().subscribe(data=>{
+        // console.log(data)
+        this.authService.setLogout();
+      },
+      err=>{
+        console.log(err)
+      });
     }
 }

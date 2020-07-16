@@ -33,7 +33,7 @@ export class CartService {
       buyer:buyer,
       quantity: bookDetails.orderQuantity
     }
-    // console.log(data)
+    //  console.log(data)
     return this.apiService.put('/cart',data)
     .pipe(
       map((res: Response) => {

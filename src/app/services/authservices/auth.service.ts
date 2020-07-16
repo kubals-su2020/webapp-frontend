@@ -45,13 +45,21 @@ signUp(userDetails):Observable<any>{
     }
     return this.loggedIn.asObservable(); 
   }
-  setLogout(){
+  logoutCleanUpTasks(){
     let removeToken = localStorage.removeItem('access_token');
     this.loggedIn.next(false);
   }
 
-  logout() {
-    let removeToken = this.setLogout();
+  logout():Observable<any>{
+    return this.apiService.post('/logout' , {})
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+      catchError(this.errorHandl));
+  }
+  setLogout(){
+    let removeToken = this.logoutCleanUpTasks();
     if (removeToken == null) {
       this.router.navigate(['signin']);
     }
