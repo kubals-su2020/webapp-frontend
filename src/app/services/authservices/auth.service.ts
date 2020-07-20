@@ -64,4 +64,12 @@ signUp(userDetails):Observable<any>{
       this.router.navigate(['signin']);
     }
   }
+  forgotPassword(userDetails):Observable<any>{
+    return this.apiService.post('/resetpassword' , {user : userDetails})
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+        catchError(this.errorHandl));
+  }
 }
