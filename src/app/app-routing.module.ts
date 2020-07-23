@@ -12,6 +12,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { ViewBookImagesComponent } from './components/view-book-images/view-book-images.component';
 import { TestComponent } from './components/test/test.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path:'addbook', component:AddBookComponent},
   { path:'viewImages/:id', component:ViewBookImagesComponent,canActivate:[AuthGuard]},
   { path:'test',component:TestComponent},
+  { path:'resetpassword',component:ForgotPasswordComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 

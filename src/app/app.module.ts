@@ -49,6 +49,7 @@ import { TestComponent } from './components/test/test.component';
 
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AddBookComponent,
     SuccessDialog,
     ViewBookImagesComponent,
-    TestComponent
+    TestComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

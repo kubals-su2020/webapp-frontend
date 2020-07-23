@@ -30,6 +30,9 @@
               <p>
                 <button mat-stroked-button color="primary" [disabled]="!signinForm.valid">Sign in!</button>
               </p>
+              <p>
+                <a mat-flat-button [routerLink]="['/resetpassword']" target="_blank">Forgot password?</a>
+              </p>
               <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p>
         </form>
       </mat-card-content>
