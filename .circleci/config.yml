@@ -60,9 +60,8 @@ workflows:
       - pr-check
   build-deploy:
     jobs:
-      - build
-      # - build:
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
+      - build:
+          filters:
+            branches:
+              only:
+                - master
